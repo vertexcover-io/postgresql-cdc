@@ -14,7 +14,7 @@ import (
 
 const MsgTimestampFormat = "2006-01-02 15:04:05.999999-07"
 
-type WalMessageConnector interface {
+type CDCStreamer interface {
 	Send(walMessage *Wal2JsonMessage)
 	Receive() (*Wal2JsonMessage, error)
 	Close() error
@@ -71,7 +71,7 @@ type Wal2JsonOldKeys struct {
 type session struct {
 	ctx                context.Context
 	replConn           *pgx.Conn
-	connector          WalMessageConnector
+	connector          CDCStreamer
 	statusInterval     time.Duration
 	nextStatusDeadline time.Time
 	nextLSN            pglogrepl.LSN

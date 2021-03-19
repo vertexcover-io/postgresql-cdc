@@ -237,7 +237,7 @@ func StartSession(
 	loggr Logger,
 	dsn string,
 	identifier string,
-	connector WalMessageConnector,
+	connector CDCStreamer,
 	startLSN pglogrepl.LSN,
 	busyWaitInterval time.Duration,
 	keepAlive time.Duration) (string, error) {
